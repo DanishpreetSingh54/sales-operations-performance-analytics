@@ -1,98 +1,335 @@
-# FMCG Sales Performance Optimization & Customer RFM Segmentation
+# Sales & Operations Performance Analytics
 
-An end-to-end data analytics project using **SQL**, **Python**, and **Power BI** to uncover key drivers of revenue, profitability, and customer behavior within a Fast-Moving Consumer Goods (FMCG) dataset.
-
----
-
-## 📌 Project Overview
-This project analyzes transactional data from an FMCG company spanning from late 2023 to mid-2026. The objective is to identify operational inefficiencies, detect hidden profitability patterns, and segment customers to provide data-driven business decisions focused on **increasing total profit, driving revenue growth, and minimizing product returns**.
-
-The project follows the **CRISP-DM (Cross-Industry Standard Process for Data Mining)** methodology to ensure a structured, business-oriented analytical approach.
+An end-to-end data analytics project focused on evaluating **sales performance, profitability, regional performance, product performance, channel efficiency, and operational patterns** using SQL, Python, and Power BI.
 
 ---
 
-## 🛠️ Tech Stack & Workflow
+## Project Overview
 
-- **Data Extraction & Cleaning:** SQL (PostgreSQL) — Used for initial data assessment, schema modifications, and formatting normalization.
-- **Exploratory Data Analysis (EDA):** Python (Pandas, NumPy, Seaborn, Matplotlib) — Used for statistical summaries, outlier detection, profit-revenue calculations, and customer segmentation modeling.
-- **Data Storytelling & Visualization:** Power BI — Used to design an interactive executive dashboard for stakeholder reporting.
+This project analyzes transactional sales data to understand how different business dimensions influence overall sales and operational performance.
 
----
+The analysis combines **PostgreSQL, Python, and Power BI** to transform transactional records into structured performance indicators and business insights.
 
-## 📊 Business Problem & Objectives
+The workflow covers:
 
-### Business Problem
-The company experiences uneven revenue growth and varying profit margins across its operations. While overall sales volumes are substantial, certain segments suffer from profit leakage and inefficiencies. Additionally, a notable volume of product returns poses a challenge, leading to unnecessary operational costs and lost revenue.
-
-### Objectives
-1. **Maximize Profit & Revenue:** Identify regions, channels, and product categories that contribute the highest profit and revenue, as well as those that are underperforming.
-2. **Minimize Product Returns:** Deep-dive into transactional returns to pinpoint the root causes (by product category, brand, channel, and outlet type) and reduce the return rate.
-3. **Customer Value Segmentation:** Apply RFM (Recency, Frequency, Monetary) Segmentation to build targeted customer retention and marketing action plans.
+**Data Preparation → Data Validation → Exploratory Analysis → KPI Analysis → Performance Comparison → Dashboarding → Recommendations**
 
 ---
 
-## 🔍 Key Insights & Data Discoveries
+## Business Problem
 
-### 1. Profit & Revenue Performance Analysis
-* **Steady Growth:** Financial performance shows a positive upward trend from year to year, with profit peaking significantly toward the end of the period.
-* **Geographical Performance:** Certain cities or regions contribute the largest chunk of revenue, while others require advanced operational or marketing evaluation due to their gap against target sales.
+Sales performance can vary significantly across regions, products, channels, and operating segments.
 
-### 2. Operational Efficiency & Risk Management (Returns Analysis)
-* **Monthly/Seasonal Trends:** Based on the transaction analysis, there is a seasonal volatility where product returns significantly decline in certain months (e.g., June to August) but spike aggressively afterward.
-* **Product & Channel Vulnerability:** Particular categories (such as Personal Care or Household) and sales channels show higher return frequencies, presenting a critical risk to overall profitability.
+A business therefore needs to understand not only how much it sells, but also:
 
-### 3. Customer Value Segmentation (RFM Analysis)
-* **High-Value Segments:** Identified clear boundaries for high-performing segments like **Loyal Customers** who generate the most stable revenue.
-* **The "At Risk" Red Flag:** A key finding from the modeling process is that **the "At Risk" customer group constitutes the largest segment in the database**. This indicates a critical breakdown in customer retention; while the business successfully attracts new buyers, it struggles to keep them engaged over time, resulting in high churn rates.
+* Where revenue is being generated
+* Which areas contribute the most profit
+* Which products perform strongly
+* Which regions underperform
+* Which channels require attention
+* Where operational issues such as returns are concentrated
+* Which areas should be prioritized for improvement
+
+The objective of this project is to provide a structured analytical view of these performance differences.
 
 ---
 
-## 💻 Customer Segmentation Implementation
+## Project Objectives
 
-The customer base classification was processed in Python using custom business logic based on Recency, Frequency, and Monetary metrics:
+1. Analyze overall sales and revenue trends.
+2. Evaluate profitability across different business dimensions.
+3. Compare regional and channel performance.
+4. Identify high- and low-performing product categories.
+5. Analyze return patterns as an operational performance indicator.
+6. Develop business-oriented KPIs for performance monitoring.
+7. Build an interactive Power BI dashboard.
+8. Translate analytical findings into practical improvement recommendations.
 
-```python
-def segment(df):
-    if df['Customer_Age'] >= 18 and df['Customer_Age'] <= 25:
-        # Custom logic mapping or RFM categorization
-        pass
-    
-    # Logic implementation for customer classification
-    if row['rfm_score'] == '555':
-        return 'Champion'
-    elif row['r_score'] >= 4 and row['f_score'] >= 4:
-        return 'Loyal Customer'
-    elif row['r_score'] >= 4:
-        return 'Recent Customer'
-    elif row['r_score'] <= 2:
-        return 'At Risk'
-    else:
-        return 'Others'
+---
 
-rfm['segment'] = rfm.apply(segment, axis=1)
+## Dataset
+
+The project uses transactional sales data containing business attributes such as:
+
+* Transaction dates
+* Customer information
+* Products
+* Product categories
+* Brands
+* Cities/regions
+* Sales channels
+* Outlet types
+* Revenue
+* Profit
+* Discounts
+* Return indicators
+
+The data was prepared before analytical processing to improve consistency and usability.
+
+---
+
+## Technology Stack
+
+### SQL — PostgreSQL
+
+Used for:
+
+* Data inspection
+* Data cleaning
+* Data validation
+* Date standardization
+* Handling missing values
+* Standardizing categorical fields
+* Preparing structured analytical data
+
+### Python
+
+Libraries used:
+
+* **Pandas** — data manipulation
+* **NumPy** — numerical analysis
+* **Matplotlib** — visualization
+* **Seaborn** — analytical visualization
+* **Jupyter Notebook** — analysis environment
+
+Python was used for exploratory analysis, KPI calculations, trend analysis, and performance comparisons.
+
+### Power BI
+
+Used for:
+
+* Interactive KPI dashboards
+* Sales trend analysis
+* Profit analysis
+* Regional comparisons
+* Product/category analysis
+* Channel analysis
+* Return monitoring
+* Business reporting
+
+---
+
+## Analytical Workflow
+
+### 1. Data Preparation
+
+The dataset was reviewed and prepared for analysis by addressing:
+
+* Missing values
+* Date inconsistencies
+* Naming inconsistencies
+* Category variations
+* Brand variations
+* Regional naming variations
+* Channel and outlet inconsistencies
+
+SQL was used to standardize and prepare the analytical dataset.
+
+---
+
+### 2. Sales Performance Analysis
+
+The analysis evaluates:
+
+* Revenue trends
+* Sales contribution
+* Product performance
+* Regional performance
+* Channel performance
+* Category performance
+
+This helps identify where sales are concentrated and where performance gaps exist.
+
+---
+
+### 3. Profitability Analysis
+
+Revenue and profit were analyzed together to understand:
+
+* High-revenue segments
+* High-profit segments
+* Lower-profit areas
+* Regional profitability
+* Category profitability
+* Channel profitability
+
+This provides a more complete view of business performance.
+
+---
+
+### 4. Operational Performance Analysis
+
+Operational patterns were evaluated using indicators such as:
+
+* Product returns
+* Return frequency
+* Regional return patterns
+* Channel return patterns
+* Outlet-level return patterns
+* Category-level return patterns
+
+Returns are treated as an operational signal that may require further investigation.
+
+---
+
+## Key Performance Areas
+
+### Revenue Performance
+
+The project compares revenue across:
+
+* Regions
+* Categories
+* Products
+* Brands
+* Channels
+* Time periods
+
+This helps identify the major contributors to sales.
+
+---
+
+### Profit Performance
+
+Profitability analysis helps distinguish between:
+
+* High-sales/high-profit areas
+* High-sales/lower-profit areas
+* Low-sales/high-margin opportunities
+* Underperforming segments
+
+This supports more informed resource allocation.
+
+---
+
+### Regional Performance
+
+Regional comparisons are used to identify:
+
+* Strong-performing markets
+* Underperforming markets
+* Revenue concentration
+* Profit concentration
+* Differences in return activity
+
+---
+
+### Product & Category Performance
+
+Products and categories are compared based on:
+
+* Sales
+* Revenue
+* Profit
+* Returns
+* Contribution to overall performance
+
+This can help prioritize products requiring further commercial or operational attention.
+
+---
+
+### Channel Performance
+
+Different sales channels are evaluated to understand:
+
+* Revenue contribution
+* Profit contribution
+* Sales volume
+* Return activity
+* Relative performance
+
+This provides a basis for channel-level performance monitoring.
+
+---
+
+## Key Insights
+
+The analysis provides a structured view of performance differences across regions, products, categories, and channels.
+
+Key observations include:
+
+* Revenue and profit are not distributed equally across business segments.
+* Some regions contribute substantially more to overall commercial performance.
+* Product categories show different levels of sales and profitability.
+* Return activity varies across products, categories, regions, and channels.
+* Combining revenue, profit, and return indicators provides a more complete view of operational performance.
+
+> Quantitative conclusions should be taken directly from the dataset and dashboard outputs.
+
+---
+
+## Business Recommendations
+
+### 1. Prioritize High-Performing Regions
+
+Identify regions with consistently strong revenue and profitability and evaluate opportunities for further growth.
+
+### 2. Investigate Underperforming Areas
+
+Use regional, category, and channel KPIs to identify segments requiring additional commercial analysis.
+
+### 3. Monitor Return Patterns
+
+Track return-heavy categories and channels to identify potential quality, fulfillment, or operational issues requiring investigation.
+
+### 4. Balance Revenue With Profitability
+
+Avoid evaluating performance using revenue alone. Profit contribution should be considered when prioritizing products, regions, and channels.
+
+### 5. Strengthen Performance Monitoring
+
+Use dashboard KPIs to regularly monitor changes in sales, profitability, regional contribution, and return activity.
+
+---
+
+## Dashboard
+
+The Power BI dashboard provides an interactive performance-monitoring view covering:
+
+* Revenue
+* Profit
+* Sales trends
+* Regional performance
+* Product/category performance
+* Channel performance
+* Return activity
+
+The dashboard is designed to make performance patterns easier to identify and communicate.
+
+---
+
+## Repository Structure
+
+```text
+├── fmcg_clean.csv
+├── rfm_fmcg.csv
+├── fmcg_analyst.ipynb
+├── fmcg_dashboard.pbix
+├── Script.sql
+└── README.md
 ```
 
-## 💡 Strategic Action Recommendations
-Based on the dataset findings and dashboard trends, the following data-driven actions are recommended:
+---
 
-1. Profit Allocation: Channel resource deployment and supply chain stock towards high-margin regions (such as Yogyakarta and Bandung) to optimize revenue returns, while restructuring local pricing and sales strategies in underperforming urban hubs.
+## Skills Demonstrated
 
-2. Systemic Supply Chain Audit: Initiate an immediate quality control and operational check for the heavily returned Food category across all sales channels. Investigate transit conditions and strict acceptance parameters—especially within Modern Trade (MT) outlets—to lower the product return rates.
+* SQL
+* PostgreSQL
+* Data Cleaning
+* Data Validation
+* Python
+* Pandas
+* NumPy
+* Exploratory Data Analysis
+* Data Visualization
+* KPI Analysis
+* Power BI
+* Business Intelligence
+* Performance Analysis
+* Business Recommendations
 
-3. Targeted Win-Back Campaigns: Deploy aggressive, automated win-back marketing efforts and personalized incentives specifically aimed at the massive At Risk segment. Prioritize re-engaging historical high-monetary accounts within this tier to improve retention rates cost-effectively.
+---
 
-## 📊 Dashboard Preview
-<img width="1810" height="1032" alt="Screenshot 2026-06-25 235635" src="https://github.com/user-attachments/assets/449e99e8-6ee0-4a83-82ce-d7f35e34814f" />
+## Outcome
 
-
-## 📂 Repository Structure
-
-├── dataset FMCG.xlsx         # Raw data source
-
-├── fmcg_clean.csv            # Processed dataset after SQL cleaning
-
-├── fmcg_analyst.ipynb        # Jupyter Notebook for EDA & RFM Analysis
-
-├── fmcg_dashboard.pbix       # Power BI Dashboard file
-
-└── README.md                 # Project documentation
+This project demonstrates the ability to use **SQL, Python, and Power BI** to evaluate business performance from transactional data and convert analytical findings into practical performance-monitoring and improvement recommendations.
